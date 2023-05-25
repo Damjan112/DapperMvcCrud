@@ -1,0 +1,32 @@
+﻿@model IEnumerable<DapperMvcCrud.Models.ProductModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Product List</h2>
+
+<p>
+    @Html.ActionLink("Create New Product", "AddProduct")
+</p>
+
+<div class="card-grid">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.ProductName)</h5>
+                <p class="card-text">
+                    <strong>Supplier ID:</strong> @Html.DisplayFor(modelItem => item.SupplierId)<br />
+                    <strong>Category ID:</strong> @Html.DisplayFor(modelItem => item.CategoryId)<br />
+                    <strong>Quantity Per Unit:</strong> @Html.DisplayFor(modelItem => item.QuantityPerUnit)<br />
+                    <strong>Unit Price:</strong> @Html.DisplayFor(modelItem => item.UnitPrice)
+                </p>
+                <div class="text-center">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
